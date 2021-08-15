@@ -1,0 +1,4 @@
+[Application]
+name=com.github.dcharles525.crypt
+runtime=io.elementary.Platform/x86_64/6
+sdk=io.elementary.Sdk/x86_64/6

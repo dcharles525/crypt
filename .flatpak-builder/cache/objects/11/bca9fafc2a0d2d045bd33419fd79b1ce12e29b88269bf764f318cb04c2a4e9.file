@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema path="/com/github/dcharles525/crypt/" id="com.github.dcharles525.crypt">
+    <key name="main-coin" type="s">
+      <default>"USD"</default>
+      <summary>Currency Settings</summary>
+      <description>So people who don't use USD can understand prices</description>
+    </key>
+    <key name="refresh-rate" type="i">
+      <default>30</default>
+      <summary>Refresh Rate</summary>
+      <description>Refresh rate for metered connections</description>
+    </key>
+    <key name="notifications" type="i">
+      <default>1</default>
+      <summary>Limit Notifications</summary>
+      <description>Allows the user to turn off notifications quickly</description>
+    </key>
+  </schema>
+</schemalist>
