@@ -1,0 +1,5 @@
+[Runtime]
+name=com.github.dcharles525.crypt.Locale
+
+[ExtensionOf]
+ref=app/com.github.dcharles525.crypt/x86_64/master
