@@ -1,0 +1,27 @@
+{
+  "id" : "com.github.dcharles525.crypt",
+  "runtime" : "io.elementary.Platform",
+  "runtime-version" : "6",
+  "runtime-commit" : "f6458cfe79a53d649c33716c75262c1a2027121f0290b529644adee9a809d39e",
+  "sdk" : "io.elementary.Sdk",
+  "sdk-commit" : "ca74ed88002bd6ec0afe868382fb028ee3cc815025d5cdd8b4ae81ae2c000ff3",
+  "command" : "com.github.dcharles525.crypt",
+  "modules" : [
+    {
+      "name" : "crypt",
+      "buildsystem" : "meson",
+      "sources" : [
+        {
+          "path" : ".",
+          "type" : "dir"
+        }
+      ]
+    }
+  ],
+  "finish-args" : [
+    "--share=ipc",
+    "--socket=fallback-x11",
+    "--socket=wayland",
+    "--share=network"
+  ]
+}
