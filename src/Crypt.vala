@@ -51,7 +51,6 @@ public class Crypt: Gtk.Application{
 
     .area{
       padding: 10px;
-      background-color: #3a3f44;
     }
 
     .padding-top{
@@ -98,6 +97,10 @@ public class Crypt: Gtk.Application{
       border-bottom-color: #1d1d1d;
       border-bottom-style: solid;
       border-bottom-width: 1px;
+    }
+
+    .notebook tab {
+      padding: 10px;
     }
   """;
 
@@ -984,6 +987,7 @@ public class Crypt: Gtk.Application{
       scrolled.set_max_content_width(1200);
       scrolled.set_min_content_height(500);
 
+      this.notebook.get_style_context ().add_class ("notebook");
       this.notebook.insert_page (scrolled, title,0);
 
       Timeout.add (refreshRate * 1000, () => {
