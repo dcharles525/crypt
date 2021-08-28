@@ -18,7 +18,9 @@ public class Crypt: Gtk.Application{
   public Gtk.Notebook notebook = new Gtk.Notebook();
   public Gtk.Notebook notebookSecondary = new Gtk.Notebook();
   public Gtk.Paned panelArea = new Gtk.Paned(Gtk.Orientation.HORIZONTAL);
-  public Caroline caroline = new Caroline();
+  public Caroline btcLineChart;
+  public Caroline ltcLineChart;
+  public Caroline ethLineChart;
   public Gtk.CssProvider provider = new Gtk.CssProvider();
   public Gtk.Box box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
   public Gtk.Box secondaryBox = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
@@ -41,9 +43,7 @@ public class Crypt: Gtk.Application{
   public int refreshRate = 60;
   public int notificationValue = 1;
   private int firstRun = 0;
-  public Caroline btcLineChart;
-  public Caroline ltcLineChart;
-  public Caroline ethLineChart;
+
   public string CODE_STYLE = """
     .box{
       padding-left: 10px;
@@ -926,7 +926,10 @@ public class Crypt: Gtk.Application{
 
       this.networkAccess = true;
 
-      var welcome = new Granite.Widgets.Welcome (_("Welcome to Crypt!"), _("Just downloading the latest data, this could take a second or two."));
+      var welcome = new Granite.Widgets.Welcome (
+        _("Welcome to Crypt!"), 
+        _("Just downloading the latest data, this could take a second or two.")
+      );
 
       this.deleteBox.pack_start(welcome);
       this.window.add(this.deleteBox);
@@ -938,15 +941,31 @@ public class Crypt: Gtk.Application{
       Gtk.Label ltcLabel = new Gtk.Label (_("Litecoin (LTC)"));
       Gtk.Label ethLabel = new Gtk.Label (_("Etherum (ETH)"));
 
-      this.btcLineChart = drawClass.drawSmallChartHour("BTC",((int)this.windowWidth) - 50,(int)(this.windowHeight/3) - 50);
-      this.ltcLineChart = drawClass.drawSmallChartHour("LTC",((int)this.windowWidth) - 50,(int)(this.windowHeight/3) - 50);
-      this.ethLineChart = drawClass.drawSmallChartHour("ETH",((int)this.windowWidth) - 50,(int)(this.windowHeight/3) - 50);
+      this.btcLineChart = drawClass.drawSmallChartHour (
+        "BTC",
+        ((int) this.windowWidth) - 50,
+        (int) (this.windowHeight/3) - 50
+      );
+      
+      this.ltcLineChart = drawClass.drawSmallChartHour (
+        "LTC",
+        ((int) this.windowWidth) - 50,
+        (int) (this.windowHeight/3) - 50
+      );
+      
+      this.ethLineChart = drawClass.drawSmallChartHour (
+        "ETH",
+        ((int) this.windowWidth) - 50,
+        (int) (this.windowHeight/3) - 50
+      );
 
-      Timeout.add(500,()=>{
-        btcLineChart.queue_draw();
-        ltcLineChart.queue_draw();
-        ethLineChart.queue_draw();
+      Timeout.add (500,()=>{
+      
+        btcLineChart.queue_draw ();
+        ltcLineChart.queue_draw ();
+        ethLineChart.queue_draw ();
         return true;
+      
       });
 
       var chart1ButtonGroup = new ChartButtonGroup().createButtonGroup("BTC",btcLineChart);
