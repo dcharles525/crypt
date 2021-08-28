@@ -8,7 +8,6 @@ add_global_arguments ('-DGETTEXT_PACKAGE="' + meson.project_name () + '"', langu
 
 executable(
     meson.project_name(),
-    'src/Caroline.vala',
     'src/Services/Coin.vala',
     'src/Crypt.vala',
     'src/Services/Draw.vala',
@@ -29,7 +28,8 @@ executable(
       dependency('clutter-gst-3.0'),
       dependency('clutter-gtk-1.0'),
       dependency('sqlite3'),
-      dependency('granite')
+      dependency('granite'),
+      dependency('caroline-0.3')
     ],
     install: true
 )
