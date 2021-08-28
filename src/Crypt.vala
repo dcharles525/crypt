@@ -4,7 +4,6 @@ using Json;
 using WebKit;
 using Gee;
 using Cairo;
-using Caroline;
 
 /*
 - Split up code and condense it

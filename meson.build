@@ -6,6 +6,9 @@ i18n = import('i18n')
 add_global_arguments('-DGETTEXT_PACKAGE="@0@"'.format (meson.project_name()), language:'c')
 add_global_arguments ('-DGETTEXT_PACKAGE="' + meson.project_name () + '"', language:'c')
 
+vapi_dir = meson.current_source_dir() / 'vapi'
+add_project_arguments(['--vapidir', vapi_dir], language: 'vala')
+
 executable(
     meson.project_name(),
     'src/Services/Coin.vala',
@@ -19,6 +22,7 @@ executable(
     'src/Wallet.vala',
     'src/Services/WalletStorage.vala',
     dependencies: [
+      meson.get_compiler('vala').find_library('caroline-0.3', dirs: vapi_dir),
       dependency('gtk+-3.0'),
       dependency('libsoup-2.4'),
       dependency('json-glib-1.0'),
@@ -28,8 +32,7 @@ executable(
       dependency('clutter-gst-3.0'),
       dependency('clutter-gtk-1.0'),
       dependency('sqlite3'),
-      dependency('granite'),
-      dependency('caroline-0.3')
+      dependency('granite')
     ],
     install: true
 )

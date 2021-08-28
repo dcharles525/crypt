@@ -1,5 +1,0 @@
-[Runtime]
-name=com.github.dcharles525.crypt.Debug
-
-[ExtensionOf]
-ref=app/com.github.dcharles525.crypt/x86_64/master
